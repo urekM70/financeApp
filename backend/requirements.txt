@@ -7,7 +7,6 @@ python-multipart>=0.0.6  # for file uploads
 psycopg2-binary>=2.9.9  # for PostgreSQL connection
 pandas>=2.0.0  # for CSV processing
 python-jose[cryptography]>=3.3.0  # for JWT tokens (if you'll add auth later)
-passlib[bcrypt]>=1.7.4  # for password hashing (if you'll add auth later)
 email-validator>=2.0.0
 openpyxl>=3.1.0
 openai>=1.0.0
@@ -15,3 +14,6 @@ pdfplumber>=0.10.0
 python-dateutil>=2.8.0
 pymupdf>=1.23.0
 pymysql>=1.0.0 # for MySQL connection
+zhipuai
+bcrypt==4.0.1
+passlib[bcrypt]==1.7.4

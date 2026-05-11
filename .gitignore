@@ -23,3 +23,10 @@ dist/
 *.db
 *.sqlite
 *.log
+dokumentacija/
+deploy.ps1
+docker*
+Docker*
+entrypoint.sh
+nginx*
+test*

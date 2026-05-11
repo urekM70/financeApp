@@ -29,7 +29,7 @@ def extract_words_from_pdf(pdf_input: Any) -> List[List[Dict[str, Any]]]:
             doc = pymupdf.open(stream=file_bytes, filetype="pdf")
             
     except Exception as e:
-        print(f"Error opening PDF: {e}")
+        print(f"Error opening PDF: {repr(e)}")
         return []
         
     all_pages = []
@@ -248,10 +248,10 @@ def parse_pdf(pdf_input: Any) -> pd.DataFrame:
     sample_lines = group_words_by_lines(all_pages[0])
     text_sample = [[w['text'] for w in line] for line in sample_lines[:50]]
     
-    print(f"DEBUG [Text Extraction]: Extracted sample text for LLM structure detection: {json.dumps(text_sample, ensure_ascii=False)}")
+    print(f"DEBUG [Text Extraction]: Extracted sample text for LLM structure detection: {json.dumps(text_sample)}")
     
     config = detect_structure_with_llm(text_sample)
-    print(f"DEBUG [LLM Output]: Received config from LLM: {json.dumps(config, ensure_ascii=False) if config else None}")
+    print(f"DEBUG [LLM Output]: Received config from LLM: {json.dumps(config) if config else None}")
     if not config or 'mapping' not in config:
         raise ValueError("Failed to detect a valid table structure in the PDF. Check LLM configuration.")
         

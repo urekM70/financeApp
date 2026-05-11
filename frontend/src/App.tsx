@@ -8,7 +8,6 @@ import { UploadPage } from './pages/Upload';
 import { BudgetingPage } from './pages/Budgeting';
 import { Personalization } from './pages/Personalization';
 import { Settings } from './pages/Settings';
-import { AccountSettings } from './pages/AccountSettings';
 import { LoginPage } from './pages/Login';
 import Reports from './pages/Reports';
 import { RegisterPage } from './pages/Register';
@@ -126,16 +125,6 @@ function App() {
                   <ProtectedRoute>
                     <Layout>
                       <Settings />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/account"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <AccountSettings />
                     </Layout>
                   </ProtectedRoute>
                 }

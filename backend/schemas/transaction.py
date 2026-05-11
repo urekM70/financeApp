@@ -7,7 +7,6 @@ class TransactionBase(BaseModel):
     amount: float
     description: str
     category: Optional[str] = None
-    account_id: Optional[int] = None
 
 class TransactionCreate(TransactionBase):
     pass
@@ -17,7 +16,6 @@ class TransactionUpdate(BaseModel):
     amount: Optional[float] = None
     description: Optional[str] = None
     category: Optional[str] = None
-    account_id: Optional[int] = None
 
 class Transaction(TransactionBase):
     id: int
@@ -44,3 +42,4 @@ class PreviewResponse(BaseModel):
     column_mapping: Optional[dict[str, str]] = None
     message: Optional[str] = None
     original_columns: Optional[List[str]] = None
+

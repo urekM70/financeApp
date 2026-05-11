@@ -16,12 +16,22 @@ api.interceptors.request.use((config) => {
   }
   const language = localStorage.getItem('language') || 'en';
   config.headers['Accept-Language'] = language;
+  const currency = localStorage.getItem('currency') || 'USD';
+  config.headers['X-Currency'] = currency;
   return config;
 });
 
 export const authApi = {
   login: async (data: any): Promise<AuthResponse> => {
-    const response = await api.post('/auth/token', data);
+    const params = new URLSearchParams();
+    params.append('username', data.email);
+    params.append('password', data.password);
+
+    const response = await api.post('/auth/token', params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
     return response.data;
   },
   register: async (data: any): Promise<User> => {
@@ -41,7 +51,7 @@ export const transactionApi = {
   },
 
   addTransaction: async (transaction: NewTransaction): Promise<Transaction> => {
-    const response = await api.post('/transactions/', transaction);
+    const response = await api.post('/transactions', transaction);
     return response.data;
   },
 
@@ -88,7 +98,7 @@ export const transactionApi = {
   },
 
   batchCreateTransactions: async (transactions: NewTransaction[]): Promise<TransactionSummary> => {
-    const response = await api.post('/transactions/batch', transactions);
+    const response = await api.post('/transactions/batch/', transactions);
     return response.data;
   },
 

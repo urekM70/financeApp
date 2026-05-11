@@ -11,19 +11,9 @@ class Transaction(Base):
     amount = Column(Float, nullable=False)
     description = Column(String(255), nullable=False)
     category = Column(String(100))
-    account_id = Column(Integer, ForeignKey("accounts.id"))
-    
-    account = relationship("Account", back_populates="transactions")
+    user_id = Column(Integer, ForeignKey("users.id"))
 
-class Account(Base):
-    __tablename__ = "accounts"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), nullable=False)
-    account_type = Column(String(50), nullable=False)
-    bank_name = Column(String(100), nullable=False)
-    
-    transactions = relationship("Transaction", back_populates="account")
+    owner = relationship("User", back_populates="transactions")
 
 class User(Base):
     __tablename__ = "users"
@@ -32,6 +22,9 @@ class User(Base):
     email = Column(String(50), unique=True, index=True)
     hashed_password = Column(String(100))
     is_active = Column(Boolean, default=True)
+
+    transactions = relationship("Transaction", back_populates="owner")
+    budgets = relationship("Budget", back_populates="owner")
 
 class ReportCache(Base):
     __tablename__ = "report_cache"
@@ -50,3 +43,6 @@ class Budget(Base):
     id = Column(Integer, primary_key=True, index=True)
     category = Column(String(100), unique=True, index=True, nullable=False)
     amount = Column(Float, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+    owner = relationship("User", back_populates="budgets")

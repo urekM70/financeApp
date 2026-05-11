@@ -40,11 +40,13 @@ export function RegisterPage() {
     try {
       await register({ email: values.email, password: values.password });
       navigate('/dashboard');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Registration failed:', error);
-      form.setError('root', { 
-        type: 'manual', 
-        message: 'Registration failed. Please try again.' 
+      const message =
+        error.response?.data?.detail || 'Registration failed. Please try again.';
+      form.setError('root', {
+        type: 'manual',
+        message,
       });
     }
   };

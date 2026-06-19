@@ -1,11 +1,11 @@
 {
-  "name": "frontend",
+  "name": "financeApp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:full": "concurrently \"npm run dev\" \"cd ../backend && uvicorn main:app --reload\"",
+    "dev:full": "concurrently \"npm run dev\" \"cd ../backend && venv\\Scripts\\uvicorn main:app --reload\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

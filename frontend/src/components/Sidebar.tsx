@@ -58,7 +58,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div className="p-2 bg-blue-600 rounded-lg">
             <PieChart className="h-6 w-6 text-white" />
           </div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">FinanceFlow</h1>
+          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">financeApp</h1>
         </div>
         
         <nav className="flex-1 p-4 overflow-y-auto">

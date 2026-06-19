@@ -52,7 +52,7 @@ FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="Finance App API",
+    title="financeApp API",
     description="API for analyzing financial transactions",
     version="0.1.0",
     redirect_slashes=False  # Prevent redirects for missing trailing slashes

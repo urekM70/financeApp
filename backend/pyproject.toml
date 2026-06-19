@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "finance-app"
+name = "financeApp"
 version = "0.1.0"
 description = "Financial transaction analysis application"
 authors = ["Your Name <your.email@example.com>"]
